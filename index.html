@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b13">
+<meta name="description" content="Máximo Galbarino — Editor de video freelance especializado en creadores, streamers y YouTubers.">
+<title>MXG | Máximo Galbarino - Video Editor</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #090b13;
+  --panel: #111522;
+  --purple: #956bff;
+  --blue: #40c4ff;
+  --text: #ffffff;
+  --muted: #a1a8bb;
+  --border: rgba(255,255,255,.09);
+  --gradient: linear-gradient(110deg,#a78bfa,#60a5fa,#40c4ff);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 80% 5%,rgba(113,75,255,.15),transparent 30%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans',sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1100px,90%);
+  margin: auto;
+}
+
+.gradient {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* NAVBAR */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(9,11,19,.9);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-content {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font: 700 30px 'Space Grotesk';
+  letter-spacing: -2px;
+}
+
+.logo span {
+  color: var(--purple);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 13px;
+  transition: .2s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-button {
+  padding: 10px 18px;
+  border: 1px solid var(--purple);
+  border-radius: 30px;
+  color: white !important;
+}
+
+/* HERO */
+
+.hero {
+  padding: 110px 0 100px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.tag {
+  color: #b8a5ff;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font: 700 clamp(48px,7vw,82px)/1.05 'Space Grotesk';
+  letter-spacing: -5px;
+  margin: 25px 0;
+}
+
+.hero p {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 13px 22px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-block;
+  transition: .25s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.primary {
+  background: var(--gradient);
+  color: #090b13;
+}
+
+.secondary {
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.hero-card {
+  background: linear-gradient(145deg,#191d32,#101321);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  padding: 45px 20px;
+  text-align: center;
+  box-shadow: 0 20px 70px rgba(0,0,0,.4);
+}
+
+.hero-card h2 {
+  font: 700 85px 'Space Grotesk';
+  letter-spacing: -9px;
+}
+
+.hero-card h2 span {
+  color: var(--purple);
+}
+
+.hero-card p {
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin: 10px auto 0;
+}
+
+/* SECTIONS */
+
+section {
+  padding: 75px 0;
+}
+
+.section-header {
+  margin-bottom: 35px;
+}
+
+.section-header small {
+  color: var(--purple);
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.section-header h2 {
+  font: 700 clamp(30px,4vw,45px) 'Space Grotesk';
+  letter-spacing: -2px;
+  margin-top: 8px;
+}
+
+.section-header p {
+  color: var(--muted);
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* VIDEOS */
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 16px;
+}
+
+.video-card {
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  transition: .25s;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--purple);
+}
+
+.video-title {
+  padding: 13px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.vertical {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9/16;
+  background: #000;
+}
+
+.horizontal {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+
+.vertical iframe,
+.horizontal iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  inset: 0;
+}
+
+/* SERVICES */
+
+.services {
+  background: rgba(255,255,255,.015);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+}
+
+.service {
+  padding: 25px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: .2s;
+}
+
+.service:hover {
+  border-color: var(--blue);
+  transform: translateY(-4px);
+}
+
+.service-icon {
+  font-size: 27px;
+  margin-bottom: 18px;
+}
+
+.service h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.service p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.about-logo {
+  background: radial-gradient(circle,rgba(149,107,255,.2),transparent 70%),var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  min-height: 230px;
+  display: grid;
+  place-items: center;
+  font: 700 75px 'Space Grotesk';
+  letter-spacing: -8px;
+}
+
+.about-logo span {
+  color: var(--purple);
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.about-text h2 {
+  font: 700 38px 'Space Grotesk';
+}
+
+/* CONTACT */
+
+.contact-box {
+  padding: 55px;
+  border-radius: 22px;
+  border: 1px solid rgba(149,107,255,.3);
+  background:
+    radial-gradient(circle at 90% 10%,rgba(64,196,255,.12),transparent 35%),
+    #121626;
+}
+
+.contact-box h2 {
+  font: 700 clamp(35px,5vw,55px) 'Space Grotesk';
+  margin: 15px 0;
+  letter-spacing: -2px;
+}
+
+.contact-box p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+footer strong {
+  color: white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    max-width: 450px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media(max-width:550px) {
+  .nav-content {
+    height: 65px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a:not(.nav-button) {
+    display: none;
+  }
+
+  .hero {
+    padding: 75px 0;
+  }
+
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  section {
+    padding: 55px 0;
+  }
+
+  .video-grid {
+    gap: 9px;
+  }
+
+  .video-title {
+    font-size: 10px;
+    padding: 9px;
+  }
+
+  .services-grid {
+    gap: 9px;
+  }
+
+  .service {
+    padding: 16px 12px;
+  }
+
+  .service h3 {
+    font-size: 13px;
+  }
+
+  .service p {
+    font-size: 11px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-logo {
+    min-height: 160px;
+  }
+
+  .contact-box {
+    padding: 27px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-content">
+    <a href="#inicio" class="logo">MXG<span>.</span></a>
+
+    <div class="nav-links">
+      <a href="#trabajos">Trabajos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto" class="nav-button">Contactar ↗</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- PORTADA -->
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="tag">EDITOR FREELANCE · ARGENTINA</span>
+
+      <h1>
+        TU CONTENIDO.<br>
+        <span class="gradient">MI EDICIÓN.</span>
+      </h1>
+
+      <p>
+        Transformo tus streams, videos y grabaciones en contenido
+        dinámico para Instagram, TikTok y YouTube.
+        Vos creás, yo me encargo de editar.
+      </p>
+
+      <div class="buttons">
+        <a href="#trabajos" class="btn primary">VER TRABAJOS ↘</a>
+        <a href="https://wa.me/5491150159999"
+           target="_blank" rel="noopener noreferrer"
+           class="btn secondary">CONTACTAR ↗</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h2>MXG<span>.</span></h2>
+      <p>VIDEO EDITING</p>
+      <p>MÁXIMO GALBARINO</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="trabajos">
+  <div class="container">
+
+    <div class="section-header">
+      <small>PORTFOLIO SELECCIONADO</small>
+      <h2>TRABAJOS <span class="gradient">DESTACADOS.</span></h2>
+      <p>Una selección de mis ediciones para redes sociales y creadores.</p>
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-title">01 / STREAMING</div>
+        <div class="vertical">
+          <iframe src="https://www.youtube.com/embed/l1Qd43kmJ98"
+            title="Edición de streaming"
+            loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-title">02 / CREADORES</div>
+        <div class="vertical">
+          <iframe src="https://www.youtube.com/embed/BgGR7iXgkO0"
+            title="Edición para creadores"
+            loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-title">03 / MARCAS</div>
+        <div class="vertical">
+          <iframe src="https://www.youtube.com/embed/oj2P4Aj0LRk"
+            title="Edición para marcas"
+            loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-title">04 / EVENTOS</div>
+        <div class="vertical">
+          <iframe src="https://www.youtube.com/embed/5y2skp_QpdY"
+            title="Edición de eventos"
+            loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- YOUTUBE -->
+
+<section>
+  <div class="container">
+
+    <div class="section-header">
+      <small>FORMATO 16:9</small>
+      <h2>CONTENIDO <span class="gradient">HORIZONTAL.</span></h2>
+      <p>Edición de videos largos para YouTube y proyectos audiovisuales.</p>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">05 / YOUTUBE</div>
+      <div class="horizontal">
+        <iframe src="https://www.youtube.com/embed/ajGKO1nv_m4"
+          title="Edición horizontal para YouTube"
+          loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+
+<section class="services" id="servicios">
+  <div class="container">
+
+    <div class="section-header">
+      <small>QUÉ PUEDO HACER POR VOS</small>
+      <h2>SERVICIOS <span class="gradient">DE EDICIÓN.</span></h2>
+      <p>Edición adaptada al estilo de tu contenido y tu audiencia.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service">
+        <div class="service-icon">▣</div>
+        <h3>Videos verticales</h3>
+        <p>Reels, TikToks y Shorts con ritmo ágil, cortes precisos y recursos visuales.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🎮</div>
+        <h3>Clips de streaming</h3>
+        <p>Momentos destacados de tus transmisiones adaptados para redes sociales.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">▶</div>
+        <h3>YouTube horizontal</h3>
+        <p>Edición de videos largos, gameplays, resúmenes y videopodcasts.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">Aa</div>
+        <h3>Subtítulos y efectos</h3>
+        <p>Subtítulos dinámicos, gráficos, transiciones y diseño sonoro.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+
+<section id="sobre-mi">
+  <div class="container about-grid">
+
+    <div class="about-logo">MXG<span>.</span></div>
+
+    <div class="about-text">
+      <span class="tag">DETRÁS DE MXG</span>
+      <h2>HOLA, SOY <span class="gradient">MÁXIMO.</span></h2>
+
+      <p>
+        Soy Máximo Galbarino, editor de video freelance.
+        Trabajo con creadores de contenido, streamers y YouTubers
+        que quieren aprovechar mejor sus grabaciones y publicar
+        contenido de forma constante.
+      </p>
+
+      <p>
+        Me enfoco en cuidar el ritmo, los detalles y el estilo
+        de cada proyecto para que el resultado represente
+        la identidad de cada creador.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACTO -->
+
+<section id="contacto">
+  <div class="container">
+
+    <div class="contact-box">
+      <span class="tag">HAGAMOS ALGO JUNTOS</span>
+
+      <h2>
+        ¿TENÉS CONTENIDO?<br>
+        <span class="gradient">HABLEMOS.</span>
+      </h2>
+
+      <p>
+        Contame qué tipo de videos necesitás y armamos
+        una propuesta de edición para tu contenido.
+      </p>
+
+      <div class="buttons">
+
+        <a href="https://wa.me/5491150159999"
+           target="_blank" rel="noopener noreferrer"
+           class="btn primary">WHATSAPP ↗</a>
+
+        <a href="https://www.instagram.com/max.galbarino/"
+           target="_blank" rel="noopener noreferrer"
+           class="btn secondary">INSTAGRAM ↗</a>
+
+        <a href="mailto:p1pox.work@gmail.com"
+           class="btn secondary">CORREO ↗</a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>MXG.</strong><br>
+    Máximo Galbarino · Editor de video freelance<br>
+    © 2026 · Todos los derechos reservados.
+  </div>
+</footer>
+
+</body>
+</html>
